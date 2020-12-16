@@ -17,10 +17,12 @@ public class AfterThrowingDemoApp {
 		// get the bean from spring container
 		AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
 		
-		// call method to find the accouts
+		// call method to find the accounts
 		List<Account> theAccounts = null;
 		try {
-		theAccounts = theAccountDAO.findAccounts();
+			// add a boolean flag to simulate exceptions
+			boolean tripWire = true;
+			theAccounts = theAccountDAO.findAccounts(tripWire);
 		}
 		catch (Exception exc) {
 			System.out.println("\n\nMain Program ... caught exception: " + exc);
